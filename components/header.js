@@ -14,10 +14,10 @@ const Header = () => {
         <nav className="flex items-center mr-4 space-x-6">
           <a href="#" className="text-blue-600">Home</a>
           <a href="#" className="text-gray-800 hover:text-gray-600 transition">Features</a>
-          <a href="#" className="border border-orange-500 text-orange-500 rounded-md px-5 py-2 hover:bg-orange-50 transition font-inter">
+          <a href="#" className="border border-orange-500 text-orange-500 rounded-md px-5 py-2 hover:bg-orange-500 hover:text-white transition font-inter">
             Sign Up
           </a>
-          <a href="#" className="bg-orange-500 text-white rounded-md px-6 py-2 hover:bg-orange-600 transition font-inter">
+          <a href="#" className="border border-orange-500 text-orange-500 rounded-md px-5 py-2 hover:bg-orange-500 hover:text-white transition font-inter">
             Login
           </a>
         </nav>
