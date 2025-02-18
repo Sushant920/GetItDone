@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const TopRatedFreelancers = () => {
   return (
-    <div className="w-full bg-neutral-100 py-28 px-16 flex flex-col items-center gap-20">
+    <div className="w-full bg-[#f5f5f5] py-28 px-16 flex flex-col items-center gap-20">
       {/* Section Title and Description */}
       <div className="flex flex-col items-center gap-6">
         <h2 className="text-5xl font-bold text-[#212529] font-['Poppins'] leading-[57.60px] text-center">
