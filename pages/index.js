@@ -7,7 +7,7 @@ export default function Home() {
     <div>
     <Header />
       {/* First Section: Landing Page */}
-      <div className="min-h-screen bg-white flex items-center justify-center px-15 py-15">
+      <div className="min-h-screen bg-[#f5f5f5] flex items-center justify-center px-15 py-15">
         <div className="container mx-auto flex items-center justify-between gap-10">
           <div className="text-left max-w-2xl">
             <h1 className="text-6xl font-bold text-gray-800 mb-6 font-['Poppins']">
@@ -40,7 +40,7 @@ export default function Home() {
       </div>
 
       {/* Second Section: Popular Categories */}
-      <div className="w-full h-[444px] px-16 py-28 bg-neutral-100 flex flex-col justify-start items-center gap-10">
+      <div className="w-full h-[444px] px-16 py-28 bg-[#f5f5f5] flex flex-col justify-start items-center gap-10">
         {/* Section Title */}
         <div className="w-[768px] text-center text-[#212529] text-[40px] font-bold font-['Poppins'] leading-[48px]">
           Popular Categories
