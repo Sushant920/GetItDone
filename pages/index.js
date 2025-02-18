@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/header';
 import FAQ from '../components/faq';
+import TopRatedFreelancers from '@/components/toprated';
 
 export default function Home() {
   return (
@@ -158,6 +159,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <TopRatedFreelancers />
       <FAQ />
     </div>
   );
