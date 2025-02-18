@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import Header from '../components/header';
+import FAQ from '../components/faq';
+
 export default function Home() {
   return (
     <div>
@@ -156,6 +158,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <FAQ />
     </div>
   );
 }
