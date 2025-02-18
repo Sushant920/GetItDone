@@ -1,8 +1,9 @@
 import Link from 'next/link';
-
+import Header from '../components/header';
 export default function Home() {
   return (
     <div>
+    <Header />
       {/* First Section: Landing Page */}
       <div className="min-h-screen bg-white flex items-center justify-center px-15 py-15">
         <div className="container mx-auto flex items-center justify-between gap-10">
