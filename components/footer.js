@@ -4,7 +4,7 @@ import instagram from '../public/instagram.svg'; // Adjust the path according to
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-100 py-4">
+    <footer className="bg-mainBackground py-4">
       <div className="mx-12 px-4 flex justify-between items-start">
         {/* Logo and Description */}
         <div>

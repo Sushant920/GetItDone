@@ -35,7 +35,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="mx-3 p-6 flex justify-between items-start space-x-8 font-poppins">
+    <div className="mx-3 p-6 flex justify-between items-start space-x-8 font-poppins bg-mainBackground">
       <div className="w-1/2">
         <h2 className="text-5xl font-bold mb-2 text-left">FAQs</h2>
         <p className="text-gray-600 max-w-xs mb-4 text-left text-base">Get answers to your most pressing questions about GetItDone.</p>

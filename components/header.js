@@ -3,7 +3,7 @@ import logo from '../public/logo.svg'; // Adjust the path according to your file
 
 const Header = () => {
   return (
-    <header className="bg-gray-100 py-4">
+    <header className="bg-mainBackground py-4">
       <div className="flex justify-between items-center px-4">
         {/* Logo */}
         <div className="ml-3 flex items-center space-x-2">
