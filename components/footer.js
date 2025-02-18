@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import logo from '../public/logo.svg'; // Adjust the path according to your file structure
-import whatsapp from '../public/whatsapp.svg'; // Adjust the path according to your file structure
 import instagram from '../public/instagram.svg'; // Adjust the path according to your file structure
 
 const Footer = () => {
@@ -21,11 +20,6 @@ const Footer = () => {
         <div className="text-gray-800">
           <h2 className="font-bold mb-2">Connect With Us</h2>
           <ul className="space-y-2">
-            <li className="flex space-x-2">
-              <div className="text-xl" />
-              <Image src={whatsapp} alt="Whatsapp" width={15} />
-              <span>Whatsapp</span>
-            </li>
             <li className="flex ml-2 space-x-1">
                 <Image src={instagram} alt="Instagram" width={15} />
               <div className="text-xl" />
