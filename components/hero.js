@@ -6,19 +6,19 @@ const HeroSection = () => {
       <div className="container mx-auto flex items-center justify-between gap-10">
         {/* Text Content */}
         <div className="text-left max-w-2xl">
-          <h1 className="text-6xl font-bold text-gray-800 mb-6 font-['Poppins']">
+          <h1 className="text-6xl font-bold text-gray-800 mb-6 font-Poppins">
             Find the Perfect
           </h1>
-          <h2 className="text-6xl font-bold text-gray-800 mb-6 font-['Poppins']">
+          <h2 className="text-6xl font-bold text-gray-800 mb-6 font-Poppins">
             <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
               Freelancer
             </span>{' '}
             for Your
           </h2>
-          <h3 className="text-6xl font-bold text-gray-800 mb-10 font-['Poppins']">
+          <h3 className="text-6xl font-bold text-gray-800 mb-10 font-Poppins">
             Work
           </h3>
-          <p className="text-xl text-gray-600 mb-10 font-['Inter']">
+          <p className="text-xl text-gray-600 mb-10 font-Inter">
             Connect with top talent from around the world to bring your ideas to
             life. Quality work, delivered on time.
           </p>
