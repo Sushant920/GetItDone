@@ -39,7 +39,12 @@ const FAQ = () => {
       <div className="w-1/2">
         <h2 className="text-5xl font-bold mb-2 text-left">FAQs</h2>
         <p className="text-gray-600 max-w-xs mb-4 text-left text-base">Get answers to your most pressing questions about GetItDone.</p>
-        <button className="border border-black px-4 py-2 hover:bg-gray-100 transition">Contact</button>
+        <button
+          onClick={handleContactClick} // Add onClick handler
+          className="border border-black px-4 py-2 hover:bg-gray-100 transition"
+        >
+          Contact
+        </button>
       </div>
       <div className="w-2/3">
         {faqData.map((item, index) => (
@@ -61,6 +66,10 @@ const FAQ = () => {
       </div>
     </div>
   );
+};
+
+const handleContactClick = () => {
+  window.location.href = '/contact'; // Redirect to the contact page
 };
 
 export default FAQ;
