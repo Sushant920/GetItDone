@@ -20,10 +20,16 @@ const Footer = () => {
         <div className="text-gray-800">
           <h2 className="font-bold mb-2">Connect With Us</h2>
           <ul className="space-y-2">
-            <li className="flex ml-2 space-x-1">
-                <Image src={instagram} alt="Instagram" width={15} />
-              <div className="text-xl" />
-              <span>Instagram</span>
+            <li className="flex ml-2 space-x-2 items-center">
+              <a 
+                href="https://www.instagram.com/getitdone.site/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="flex items-center space-x-2 hover:text-blue-500 transition"
+              >
+                <Image src={instagram} alt="Instagram" width={18} height={18} />
+                <span>Instagram</span>
+              </a>
             </li>
           </ul>
         </div>
