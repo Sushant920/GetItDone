@@ -1,7 +1,7 @@
 # GetItDone
 
 ## About  
-**GetItDone** is a platform connecting skilled freelancers with users seeking high-quality services. Our goal is to simplify freelancing by offering a seamless, secure, and efficient workflow for both clients and freelancers. 
+**GetItDone** is a platform connecting skilled freelancers with users seeking high-quality services. Our goal is to simplify freelancing by offering a seamless, secure, and efficient workflow for both clients and freelancers.
 
 ## Key Features  
 - **Freelancer Discovery:** Search and filter freelancers by expertise, availability, and ratings.  
