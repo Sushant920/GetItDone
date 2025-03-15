@@ -133,7 +133,6 @@ const TopRatedFreelancers = () => {
         >
           Request a Freelancer
         </Link>
-        <Link href="#" className="font-Inter text-base ">View &gt;</Link>
       </div>
     </div>
   );
