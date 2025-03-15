@@ -12,7 +12,7 @@ const Footer = () => {
             <Image src={logo} alt="GetItDone Logo" width={138} height={40} />
           </div>
           <p className="text-gray-600 mt-2 max-w-xs">
-            Connect with the best freelance talent from around the world.
+            Connect with the best freelance talent <br/> from around the world.
           </p>
         </div>
 
@@ -36,7 +36,7 @@ const Footer = () => {
       </div>
 
       {/* Divider Line */}
-      <div className="border-t border-blue-300 mx-16 my-4"></div>
+      <div className="border-t border-[#007BFF] mx-16 my-4"></div>
 
       {/* Copyright */}
       <div className="text-center text-gray-600">
