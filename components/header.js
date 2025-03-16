@@ -8,6 +8,7 @@ import { Button } from './ui/button';
 import { FcGoogle } from 'react-icons/fc';
 import { MdEmail } from 'react-icons/md';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const HeaderWithModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -201,8 +202,16 @@ const HeaderWithModal = () => {
                 )}
 
                 <div className="text-xs text-gray-500 mt-4">
-                  By joining, you agree to the GetItDone <span className="underline">Terms of Service</span> and consent to receiving occasional emails from us. Please review our <span className="underline">Privacy Policy</span> to understand how we collect and use your personal data.
-                </div>
+                  By joining, you agree to the GetItDone 
+                  <Link href="/termsofservice">
+                      <span className="underline cursor-pointer"> Terms of Service </span>
+                  </Link> 
+                  and consent to receiving occasional emails from us. Please review our 
+                  <Link href="/privacypolicy">
+                      <span className="underline cursor-pointer"> Privacy Policy </span>
+                  </Link>
+                  to understand how we collect and use your personal data.
+              </div>
               </div>
             </div>
           </motion.div>
