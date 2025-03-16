@@ -38,8 +38,11 @@ const ContactUs = () => {
                 />
               </svg>
               <p className="text-[#212529] text-base font-normal leading-normal">
-                info@example.com
+                <a href="mailto:getitdone.sitehq@gmail.com" className="hover:underline">
+                  getitdone.sitehq@gmail.com
+                </a>
               </p>
+
             </div>
 
             {/* Instagram */}
@@ -59,7 +62,7 @@ const ContactUs = () => {
                 />
               </svg>
               <Link
-                href="https://instagram.com"
+                href="https://www.instagram.com/getitdone.site/"
                 className="text-[#212529] text-base font-normal leading-normal hover:underline"
               >
                 Instagram
@@ -129,9 +132,8 @@ const ContactUs = () => {
               <option value="" disabled selected>
                 Choose one...
               </option>
-              <option value="support">Support</option>
-              <option value="billing">Billing</option>
               <option value="feedback">Feedback</option>
+              <option value="support">Other</option>
             </select>
           </div>
 
