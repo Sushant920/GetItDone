@@ -10,6 +10,8 @@ export default {
   	extend: {
   		colors: {
         purple: "#6A0DAD",
+        headerPurple: "#9333EA",
+
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			mainBackground: '#F5F5F5',
