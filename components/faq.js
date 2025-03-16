@@ -41,7 +41,7 @@ const FAQ = () => {
         <p className="text-gray-600 max-w-xs mb-4 text-left text-base">Get answers to your most pressing questions about GetItDone.</p>
         <button
           onClick={handleContactClick} // Add onClick handler
-          className="border border-black px-4 py-2 hover:bg-gray-100 transition"
+          className="border border-black px-4 py-2 hover:bg-gray-200 transition"
         >
           Contact
         </button>
