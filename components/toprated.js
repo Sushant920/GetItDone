@@ -36,18 +36,16 @@ const TopRatedFreelancers = () => {
                   ⭐️ 4.9 (128 reviews)
                 </p>
                 <p className="text-xs font-normal text-[#212529] font-Inter leading-[18.43px]">
-                  Starting from{' '}
-                  <span className="font-bold font-Poppins">₹500 (2 days)</span>
+                  Starting from <span className="font-bold font-Poppins">₹500 (2 days)</span>
                 </p>
               </div>
             </div>
             <div className="absolute right-4 bottom-4">
-              <Link
-                href="/profile/agent001"
+              <div
                 className="px-3 py-1 rounded border border-[#007bff] text-[#212529] text-[10.92px] font-normal font-Inter leading-none hover:bg-[#007bff] hover:text-white transition duration-300"
               >
                 View Profile
-              </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -72,18 +70,16 @@ const TopRatedFreelancers = () => {
                   ⭐️ 4.3 (128 reviews)
                 </p>
                 <p className="text-xs font-normal text-[#212529] font-Inter leading-[18.43px]">
-                  Starting from{' '}
-                  <span className="font-bold font-Poppins">₹500 (2 days)</span>
+                  Starting from <span className="font-bold font-Poppins">₹500 (2 days)</span>
                 </p>
               </div>
             </div>
             <div className="absolute right-4 bottom-4">
-              <Link
-                href="/profile/agent041"
+              <div
                 className="px-3 py-1 rounded border border-[#007bff] text-[#212529] text-[10.92px] font-normal font-Inter leading-none hover:bg-[#007bff] hover:text-white transition duration-300"
               >
                 View Profile
-              </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -108,18 +104,16 @@ const TopRatedFreelancers = () => {
                   ⭐️ 4.4 (37 reviews)
                 </p>
                 <p className="text-xs font-normal text-[#212529] font-Inter leading-[18.43px]">
-                  Starting from{' '}
-                  <span className="font-bold font-Poppins">₹500 (2 days)</span>
+                  Starting from <span className="font-bold font-Poppins">₹500 (2 days)</span>
                 </p>
               </div>
             </div>
             <div className="absolute right-4 bottom-4">
-              <Link
-                href="/profile/agent097"
+              <div
                 className="px-3 py-1 rounded border border-[#007bff] text-[#212529] text-[10.92px] font-normal font-Inter leading-none hover:bg-[#007bff] hover:text-white transition duration-300"
               >
                 View Profile
-              </Link>
+              </div>
             </div>
           </div>
         </div>
