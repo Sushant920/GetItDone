@@ -10,7 +10,7 @@ const HeroSection = () => {
             Find the Perfect
           </h1>
           <h2 className="text-6xl font-bold text-gray-800 mb-6 font-Poppins">
-            <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 to-headerPurple bg-clip-text text-transparent">
               Freelancer
             </span>{' '}
             for Your

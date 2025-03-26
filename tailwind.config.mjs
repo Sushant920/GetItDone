@@ -9,6 +9,7 @@ export default {
   theme: {
   	extend: {
   		colors: {
+			headerPurple: '#9333ea',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			mainBackground: '#F5F5F5',
