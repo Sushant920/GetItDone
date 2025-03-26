@@ -38,8 +38,11 @@ const ContactUs = () => {
                 />
               </svg>
               <p className="text-[#212529] text-base font-normal leading-normal">
-                getitdone.sitehq@gmail.com
+                <a href="mailto:getitdone.sitehq@gmail.com" className="hover:underline">
+                  getitdone.sitehq@gmail.com
+                </a>
               </p>
+
             </div>
 
             {/* Instagram */}
