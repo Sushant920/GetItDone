@@ -1,12 +1,12 @@
 import { FaStar, FaCheck } from 'react-icons/fa';
 import { IoPersonSharp } from 'react-icons/io5';
-import Header from '@/components/header';
+import DashboardHeader from '@/components/DashboardHeader';
 import Footer from '@/components/header';
 
 export default function ProfileDashboard() {
   return (
     <>
-    <Header />
+    <DashboardHeader />
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* Profile Section */}
       <div className="bg-white rounded-lg shadow-md p-6 mb-6">
@@ -27,7 +27,7 @@ export default function ProfileDashboard() {
               </div>
             </div>
           </div>
-          <button className="px-4 py-2 bg-purple-700 text-white rounded-md hover:bg-purple-800">
+          <button className="px-4 py-2 bg-purple text-white rounded-md hover:bg-purple-800">
             Edit Profile
           </button>
         </div>
