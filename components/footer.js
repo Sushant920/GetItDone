@@ -1,12 +1,12 @@
 import Image from 'next/image';
-import logo from '../public/logo.svg'; // Adjust the path according to your file structure
-import instagram from '../public/instagram.svg'; // Adjust the path according to your file structure
+import logo from '../public/logo.svg';
+import instagram from '../public/instagram.svg';
 
 const Footer = () => {
   return (
-    <footer className="bg-mainBackground py-4">
+    <footer className="bg-mainBackground py-4 w-full">
       <div className="mx-12 px-4 flex justify-between items-start">
-        {/* Logo and Description */}
+        {/* Logo and Description - unchanged */}
         <div>
           <div className="flex items-center space-x-2">
             <Image src={logo} alt="GetItDone Logo" width={138} height={40} />
@@ -16,29 +16,34 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Social Media Links */}
+        {/* Improved Instagram CTA */}
         <div className="text-gray-800">
-          <h2 className="font-bold mb-2">Connect With Us</h2>
-          <ul className="space-y-2">
-            <li className="flex ml-2 space-x-2 items-center">
-              <a 
-                href="https://www.instagram.com/getitdone.site/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center space-x-2 hover:text-blue-500 transition"
-              >
-                <Image src={instagram} alt="Instagram" width={18} height={18} />
-                <span>Instagram</span>
-              </a>
-            </li>
-          </ul>
+          <h2 className="font-bold mb-3">Connect With Us</h2>
+          <a 
+            href="https://www.instagram.com/getitdone.site/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex items-center space-x-2 hover:text-[#007BFF] transition-colors duration-200"
+          >
+            <div className="relative w-5 h-5">
+              <Image 
+                src={instagram} 
+                alt="Instagram" 
+                fill
+                className="object-contain group-hover:scale-110 transition-transform duration-200"
+              />
+            </div>
+            <span className="font-medium">Instagram</span>
+          </a>
         </div>
       </div>
 
-      {/* Divider Line */}
-      <div className="border-t border-[#007BFF] mx-16 my-4"></div>
+      {/* Full-width divider */}
+      <div className="border-t border-[#007BFF] max-w-[calc(100%-8rem)] my-4 mx-auto"></div>
 
-      {/* Copyright */}
+
+
+      {/* Copyright - unchanged */}
       <div className="text-center text-gray-600">
         © 2025 GetItDone. All rights reserved.
       </div>
