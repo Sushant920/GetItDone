@@ -132,8 +132,15 @@ const ContactUs = () => {
               <option value="" disabled selected>
                 Choose one...
               </option>
-              <option value="feedback">Feedback</option>
-              <option value="support">Other</option>
+              <option value="feedback">Order & Payment Issues – Problems with payments, refunds, or disputes.</option>
+              <option value="support">Service Issues – Delayed delivery, low-quality work, or freelancer concerns.</option>
+              <option value="feedback">Client Issues – Unresponsive clients, unclear requirements, or disputes.</option>
+              <option value="support">Technical Issues – Bugs, errors, or trouble using the platform.</option>
+              <option value="feedback">Account & Profile Support – Login issues, verification, or profile setup.</option>
+              <option value="support">Platform Fees & Payouts – Questions about pricing, commissions, or payments.</option>
+              <option value="feedback">General Inquiry – Any other concerns not listed above.</option>
+
+
             </select>
           </div>
 
