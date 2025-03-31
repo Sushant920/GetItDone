@@ -1,125 +1,205 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { FaBell, FaSearch, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import Image from 'next/image';
 
 const DashboardHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const router = useRouter();
   
   // Determine active route
   const isUserDashboard = router.pathname === '/userDashboard';
   const isFreelancerDashboard = router.pathname === '/freelancerDashboard';
 
-  // Check if we're on mobile screen size
+  // Check screen size and set mobile state
   useEffect(() => {
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 1024);
     };
     
-    // Initial check
     checkIfMobile();
-    
-    // Add event listener for window resize
     window.addEventListener('resize', checkIfMobile);
-    
-    // Cleanup
     return () => window.removeEventListener('resize', checkIfMobile);
   }, []);
 
-  // Close menu when clicking outside
+  // Close menus when clicking outside or route changes
   useEffect(() => {
-    if (!isMenuOpen) return;
+    const closeMenus = () => {
+      setIsMenuOpen(false);
+      setShowProfileDropdown(false);
+    };
     
-    const closeMenu = () => setIsMenuOpen(false);
-    document.addEventListener('click', closeMenu);
+    document.addEventListener('click', closeMenus);
+    router.events.on('routeChangeComplete', closeMenus);
     
-    return () => document.removeEventListener('click', closeMenu);
-  }, [isMenuOpen]);
+    return () => {
+      document.removeEventListener('click', closeMenus);
+      router.events.off('routeChangeComplete', closeMenus);
+    };
+  }, [router]);
+
+  // Handle search submission
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/search?q=${encodeURIComponent(searchQuery)}`);
+    }
+  };
+
+  // Handle logout
+  const handleLogout = () => {
+    // Here you would typically clear auth state
+    router.push('/');
+  };
 
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="font-bold text-xl text-gray-900 flex-shrink-0">
-            <span className="text-black">GetIt<span className="text-orange-500 border-b-2 border-orange-500">Done</span></span>
+          <Link href="/" className="flex-shrink-0 flex items-center">
+            <div className="h-10 w-40 relative">
+              <Image 
+                src="/logo.svg" 
+                alt="GetItDone Logo"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
           </Link>
           
           {/* Search - Hidden on mobile, visible on tablets and up */}
-          <div className="hidden md:block relative w-64 mx-4 flex-grow max-w-md">
+          <form 
+            onSubmit={handleSearch}
+            className="hidden md:block relative w-64 mx-4 flex-grow max-w-md"
+          >
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-              </svg>
+              <FaSearch className="h-4 w-4 text-gray-400" />
             </div>
             <input 
               type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search freelancers or role..." 
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
-          </div>
+          </form>
           
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex">
-            <Link href="/userDashboard">
-                <button className={`${isUserDashboard ? 'bg-blue-500 text-white' : 'border border-gray-300 text-gray-700'} px-4 py-2 rounded-l-md text-sm font-medium`}>
-                    User
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center space-x-6">
+            <div className="flex border border-gray-300 rounded-md overflow-hidden">
+              <Link href="/userDashboard">
+                <button 
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${
+                    isUserDashboard 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  User
                 </button>
-                </Link>
-
-                <Link href="/freelancerDashboard">
-                    <button className={`${isFreelancerDashboard ? 'bg-blue-500 text-white' : 'border border-gray-300 text-gray-700'} px-4 py-2 rounded-r-md text-sm font-medium`}>
-                        Freelancer
-                    </button>
-                </Link>
+              </Link>
+              <Link href="/freelancerDashboard">
+                <button 
+                  className={`px-4 py-2 text-sm font-medium transition-colors ${
+                    isFreelancerDashboard 
+                      ? 'bg-blue-500 text-white' 
+                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  Freelancer
+                </button>
+              </Link>
             </div>
 
-            <Link href="/browse" className="text-gray-700 hover:text-gray-900 text-sm font-medium">
+            <div className="flex space-x-6">
+              <Link href="/browse" className="text-gray-700 hover:text-gray-900 text-sm font-medium hover:underline flex items-center">
                 Browse
-            </Link>
+              </Link>
 
-            <Link href="/how-it-works" className="text-gray-700 hover:text-gray-900 text-sm font-medium">
+              <Link href="/how-it-works" className="text-gray-700 hover:text-gray-900 text-sm font-medium hover:underline flex items-center">
                 How it works
-            </Link>
+              </Link>
 
-            <Link href="/contact-us" className="text-gray-700 hover:text-gray-900 text-sm font-medium">
+              <Link href="/contact-us" className="text-gray-700 hover:text-gray-900 text-sm font-medium hover:underline flex items-center">
                 Contact Us
-            </Link>
-
-            <button className="text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              </svg>
-            </button>
-            
-            <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
+              </Link>
             </div>
-          </div>
-          
-          {/* Mobile search - only visible on small screens */}
-          <div className="md:hidden flex items-center">
-            <button className="text-gray-600 mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-              </svg>
-            </button>
+
+            <div className="flex items-center space-x-4">
+              <button className="text-gray-700 hover:text-gray-900 p-1 relative">
+                <FaBell className="h-5 w-5" />
+                <span className="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+              </button>
+              
+              <div className="relative">
+                <div 
+                  className="w-9 h-9 rounded-full overflow-hidden border-2 border-orange-500 cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowProfileDropdown(!showProfileDropdown);
+                  }}
+                >
+                  <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      viewBox="0 0 24 24" 
+                      fill="currentColor" 
+                      className="w-6 h-6 text-gray-600"
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" 
+                        clipRule="evenodd" 
+                      />
+                    </svg>
+                  </div>
+                </div>
+                {showProfileDropdown && (
+                  <div 
+                    className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                    >
+                      <FaSignOutAlt className="text-orange-500" />
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
           
           {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+          <div className="lg:hidden flex items-center space-x-4">
             <button 
               onClick={(e) => {
                 e.stopPropagation();
                 setIsMenuOpen(!isMenuOpen);
               }} 
-              className="text-gray-600"
+              className="text-gray-600 p-1"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d={isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} 
+                />
               </svg>
             </button>
           </div>
@@ -128,66 +208,103 @@ const DashboardHeader = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="lg:hidden px-4 py-3 border-t border-gray-200" onClick={(e) => e.stopPropagation()}>
+        <div 
+          className="lg:hidden px-4 py-3 border-t border-gray-200 bg-white" 
+          onClick={(e) => e.stopPropagation()}
+        >
           {/* Mobile Search */}
-          <div className="mb-4 relative">
+          <form onSubmit={handleSearch} className="mb-4 relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <svg className="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
-              </svg>
+              <FaSearch className="h-4 w-4 text-gray-400" />
             </div>
             <input 
               type="text" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search freelancers or role..." 
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
-          </div>
+          </form>
           
-        {/* Job/Freelancer toggle - Updated for mobile as well */}
-          <div className="flex mb-4">
+          {/* User/Freelancer toggle */}
+          <div className="flex mb-4 border border-gray-300 rounded-md overflow-hidden">
             <Link href="/userDashboard" className="flex-1">
-              <button className={`${isUserDashboard ? 'bg-blue-500 text-white' : 'border border-gray-300 text-gray-700'} px-4 py-2 rounded-l-md text-sm font-medium w-full`}>
+              <button 
+                className={`w-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isUserDashboard 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
+              >
                 User
               </button>
             </Link>
-
             <Link href="/freelancerDashboard" className="flex-1">
-              <button className={`${isFreelancerDashboard ? 'bg-blue-500 text-white' : 'border border-gray-300 text-gray-700'} px-4 py-2 rounded-r-md text-sm font-medium w-full`}>
+              <button 
+                className={`w-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isFreelancerDashboard 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                }`}
+              >
                 Freelancer
               </button>
             </Link>
           </div>
                   
           {/* Navigation Links */}
-          <div className="space-y-3">
-            <Link href="/browse" className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-2 py-1 rounded-md text-sm font-medium">
+          <div className="space-y-2 mb-4">
+            <Link 
+              href="/browse" 
+              className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            >
               Browse
             </Link>
-            <Link href="/how-it-works" className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-2 py-1 rounded-md text-sm font-medium">
+            <Link 
+              href="/how-it-works" 
+              className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            >
               How it works
             </Link>
-            <Link href="/contact-us" className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-2 py-1 rounded-md text-sm font-medium">
+            <Link 
+              href="/contact-us" 
+              className="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+            >
               Contact Us
             </Link>
           </div>
           
           {/* User Profile & Notifications */}
-          <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
-            <button className="text-gray-700 flex items-center space-x-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
-              <span>Notifications</span>
+          <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+            <button className="text-gray-700 flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-gray-100">
+              <FaBell className="h-5 w-5" />
+              <span className="text-sm font-medium">Notifications</span>
+              <span className="h-2 w-2 rounded-full bg-red-500"></span>
             </button>
             
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-gray-100"
+            >
+              <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-orange-500 bg-gray-100 flex items-center justify-center">
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  fill="currentColor" 
+                  className="w-6 h-6 text-gray-600"
+                >
+                  <path 
+                    fillRule="evenodd" 
+                    d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" 
+                    clipRule="evenodd" 
+                  />
                 </svg>
               </div>
-              <span className="text-sm font-medium text-gray-700">My Account</span>
-            </div>
+              <span className="text-sm font-medium text-gray-700 flex items-center gap-2">
+                <FaSignOutAlt className="text-orange-500" />
+                Logout
+              </span>
+            </button>
           </div>
         </div>
       )}
